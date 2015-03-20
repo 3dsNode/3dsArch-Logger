@@ -12,16 +12,6 @@ import fr.skyforce77.arch3ds.api.input.ArchInput;
 public class Logger extends Plugin{
 
 	@Override
-	public String getName() {
-		return "Logger";
-	}
-
-	@Override
-	public String getVersion() {
-		return "0.1";
-	}
-
-	@Override
 	public void onInit() {
 		System.out.println("[Logger] Called init event");
 	}
