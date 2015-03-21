@@ -40,7 +40,7 @@ public class Logger extends ArchGame{
 	
 	@Override
 	public void onTouched(ArchScreen screen, int x, int y) {
-		System.out.println("[Logger] Called touch event: ["+x+";"+y+"]");
+		System.out.println("[Logger] Called touch event: ["+screen+" at "+x+";"+y+"]");
 	}
 	
 	@Override
