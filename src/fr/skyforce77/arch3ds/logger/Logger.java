@@ -15,38 +15,39 @@ public class Logger extends ArchGame{
 
 	@Override
 	public void onInit() {
-		System.out.println("[Logger] Called init event");
+		System.err.println("[Logger] Called init event");
 	}
 	
 	@Override
 	public void onEnable() {
-		System.out.println("[Logger] Called enable event");
+		System.err.println("[Logger] Called enable event");
 	}
 	
 	@Override
 	public void onDisable() {
-		System.out.println("[Logger] Called disable event");
+		System.err.println("[Logger] Called disable event");
 	}
 
 	@Override
 	public void onInput(ArchInput input, byte status) {
-		System.out.println("[Logger] Called input event: ["+input.getCode()+": "+status+"]");
+		System.err.println("[Logger] Called input event: ["+input.getCode()+": "+status+"]");
 	}
 
 	@Override
 	public void onAxis(ArchAxis axis, double location) {
-		System.out.println("[Logger] Called axis event: ["+axis.getCode()+": "+location+"]");
+		System.err.println("[Logger] Called axis event: ["+axis.getCode()+": "+location+"]");
 	}
 	
 	@Override
 	public void onTouched(ArchScreen screen, int x, int y) {
-		System.out.println("[Logger] Called touch event: ["+screen+" at "+x+";"+y+"]");
+		System.err.println("[Logger] Called touch event: ["+screen+" at "+x+";"+y+"]");
 	}
 	
 	@Override
 	public void onTick() {
 		x = x > 100 ? 0 : x+1;
-		ArchGraphics.push();
+		if(x%10 == 0)
+			ArchGraphics.push();
 	}
 
 	@Override
