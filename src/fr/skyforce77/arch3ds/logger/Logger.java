@@ -34,19 +34,34 @@ public class Logger extends ArchGame{
 	}
 
 	@Override
-	public void onAxis(ArchAxis axis, double location) {
-		System.err.println("[Logger] Called axis event: ["+axis.getCode()+": "+location+"]");
+	public void onAxis(ArchAxis axis, double x, double y) {
+		System.err.println("[Logger] Called axis event: ["+axis.getCode()+": "+x+","+y+"]");
 	}
 	
 	@Override
-	public void onTouched(ArchScreen screen, int x, int y) {
-		System.err.println("[Logger] Called touch event: ["+screen+" at "+x+";"+y+"]");
+	public void onStylusClicked(ArchScreen screen, int x, int y) {
+		System.err.println("[Logger] Called stylus click event: ["+screen+" at "+x+";"+y+"]");
+	}
+	
+	@Override
+	public void onStylusPressed(ArchScreen screen, int x, int y) {
+		System.err.println("[Logger] Called stylus press event: ["+screen+" at "+x+";"+y+"]");
+	}
+	
+	@Override
+	public void onStylusReleased(ArchScreen screen, int x, int y) {
+		System.err.println("[Logger] Called stylus release event: ["+screen+" at "+x+";"+y+"]");
+	}
+	
+	@Override
+	public void onStylusMoved(ArchScreen screen, int x, int y) {
+		System.err.println("[Logger] Called stylus move event: ["+screen+" at "+x+";"+y+"]");
 	}
 	
 	@Override
 	public void onTick() {
 		x = x > 100 ? 0 : x+1;
-		if(x%10 == 0)
+		if(x%3 == 0)
 			ArchGraphics.push();
 	}
 
