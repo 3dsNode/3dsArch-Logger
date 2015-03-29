@@ -8,14 +8,23 @@ import fr.skyforce77.arch3ds.api.graphics.ArchGraphics;
 import fr.skyforce77.arch3ds.api.graphics.ArchScreen;
 import fr.skyforce77.arch3ds.api.input.ArchAxis;
 import fr.skyforce77.arch3ds.api.input.ArchInput;
+import fr.skyforce77.arch3ds.api.listener.AxisListener;
+import fr.skyforce77.arch3ds.api.listener.GraphicsListener;
+import fr.skyforce77.arch3ds.api.listener.InputListener;
+import fr.skyforce77.arch3ds.api.listener.StylusListener;
 
-public class Logger extends ArchGame{
+public class Logger extends ArchGame implements InputListener, AxisListener, GraphicsListener, StylusListener{
 	
 	private static int x = 0;
 
 	@Override
 	public void onInit() {
 		System.err.println("[Logger] Called init event");
+		
+		this.addAxisListener(this);
+		this.addGraphicsListener(this);
+		this.addInputListener(this);
+		this.addStylusListener(this);
 	}
 	
 	@Override
@@ -62,11 +71,11 @@ public class Logger extends ArchGame{
 	public void onTick() {
 		x = x > 100 ? 0 : x+1;
 		if(x%3 == 0)
-			ArchGraphics.push();
+			ArchGraphics.push(ArchScreen.TOP_SCREEN);
 	}
 
 	@Override
-	public void drawScreen(ArchGraphics graphics) {
+	public void onScreenUpdated(ArchGraphics graphics) {
 		Graphics2D g2d = graphics.getGraphics();
 		g2d.clearRect(0, 0, graphics.getWidth(), graphics.getHeight());
 		g2d.setColor(Color.BLACK);
