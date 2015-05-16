@@ -6,6 +6,7 @@ import java.awt.Graphics2D;
 import fr.skyforce77.arch3ds.api.ArchGame;
 import fr.skyforce77.arch3ds.api.graphics.ArchGraphics;
 import fr.skyforce77.arch3ds.api.graphics.ArchScreen;
+import fr.skyforce77.arch3ds.api.graphics.ArchScreenType;
 import fr.skyforce77.arch3ds.api.input.ArchAxis;
 import fr.skyforce77.arch3ds.api.input.ArchInput;
 import fr.skyforce77.arch3ds.api.listener.AxisListener;
@@ -71,7 +72,7 @@ public class Logger extends ArchGame implements InputListener, AxisListener, Gra
 	public void onTick() {
 		x = x > 100 ? 0 : x+1;
 		if(x%3 == 0)
-			ArchGraphics.push(ArchScreen.TOP_SCREEN);
+			ArchGraphics.push(ArchScreenType.TOP_SCREEN);
 	}
 
 	@Override
@@ -81,7 +82,7 @@ public class Logger extends ArchGame implements InputListener, AxisListener, Gra
 		g2d.setColor(Color.BLACK);
 		g2d.fillRect(0, 0, graphics.getWidth(), graphics.getHeight());
 		
-		if(graphics.getScreen().equals(ArchScreen.TOP_SCREEN)) {
+		if(graphics.getScreen().getType().equals(ArchScreenType.TOP_SCREEN)) {
 			g2d.setColor(Color.WHITE);
 			g2d.drawString("Logger", x, graphics.getHeight()/2);
 		}

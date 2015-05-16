@@ -1,3 +1,4 @@
 name: Logger
 main: fr.skyforce77.arch3ds.logger.Logger
 version: 0.1
+arch: 3.0
